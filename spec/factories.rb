@@ -5,4 +5,8 @@ FactoryGirl.define do
     password "password"
     password_confirmation "password"
   end
+
+  factory :beep do
+    beep "the raven flies at midnight"
+  end
 end

@@ -1,0 +1,7 @@
+<%= form_for @beep, remote: true do |f| %>
+  <div class="form-group">
+    <%= f.label :beep %>
+    <%= f.text_field :beep %>
+  </div>
+  <%= f.submit(class: "btn btn-info") %>
+<% end %>

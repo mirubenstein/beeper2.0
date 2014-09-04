@@ -6,4 +6,6 @@ describe User do
     user = FactoryGirl.create(:user)
     expect(ActionMailer::Base.deliveries.last.to).to eq [user.email]
   end
+
+  it { should have_many :beeps }
 end
