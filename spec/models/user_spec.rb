@@ -1,5 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do
+  it "sends an email when the user is created" do
+    DatabaseCleaner.clean
+    user = FactoryGirl.create(:user)
+    expect(ActionMailer::Base.deliveries.last.to).to eq [user.email]
+  end
 end
