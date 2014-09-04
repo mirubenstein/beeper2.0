@@ -4,7 +4,7 @@
 
 <p><%= @beep.beep %></p>
 
-<p><%= link_to "Checkout more of #{@beep.user.name.capitalize}'s Beeps", user_path(@beep.user) %>
+<p><%= link_to "Checkout more of #{@beep.user.name.capitalize}'s Beeps", user_url(@beep.user) %></p>
 
   <p>friendship,</p>
   <p>The Management</p>

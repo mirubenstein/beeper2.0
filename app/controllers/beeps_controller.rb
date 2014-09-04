@@ -2,7 +2,7 @@ class BeepsController < ApplicationController
 
   def index
   @beeps = Beep.all
-  @beep = current_user.beeps.new
+  @beep = Beep.new
   end
 
   def new
