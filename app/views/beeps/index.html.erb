@@ -1,4 +1,6 @@
 
-<%= render 'form' %>
+<%= link_to "New Beep", new_beep_path, id: "beeper", class: "btn btn-default", remote: true %>
 
-<%= render @beeps %>
+
+
+<div id="user_beeps"><%= render @beeps %></div>

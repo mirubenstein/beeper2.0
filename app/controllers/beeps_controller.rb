@@ -5,6 +5,13 @@ class BeepsController < ApplicationController
   @beep = current_user.beeps.new
   end
 
+  def new
+    @beep = current_user.beeps.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create
     @beep = current_user.beeps.new(beep_params)
     if @beep.save
