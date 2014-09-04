@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :beeps
 
-def send_welcome_message
-  UserMailer.signup_confirmation(self).deliver
-end
+  def send_welcome_message
+    UserMailer.signup_confirmation(self).deliver
+  end
 end
 
