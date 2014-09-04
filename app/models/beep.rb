@@ -20,4 +20,5 @@ private
       self.tags.create(user_id: User.find_by(name: name).id)
     end
   end
+
 end

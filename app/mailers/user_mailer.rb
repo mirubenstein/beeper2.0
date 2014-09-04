@@ -10,4 +10,10 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail to: user.email, subject: "Welcome to the Clone"
   end
+
+  def tag_notification(user, beep)
+    @user = user
+    @beep = beep
+    mail to: user.email, subject: "You were mentioned in #{beep.user.name}'s Beep"
+  end
 end

@@ -1,0 +1,10 @@
+<h1><%= @user.name %></h1>
+
+<p><%= @beep.user.name.capitalize %> mentioned you in their beep:</p>
+
+<p><%= @beep.beep %></p>
+
+<p><%= link_to "Checkout more of #{@beep.user.name.capitalize}'s Beeps", user_path(@beep.user) %>
+
+  <p>friendship,</p>
+  <p>The Management</p>
