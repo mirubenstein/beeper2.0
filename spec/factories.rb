@@ -7,6 +7,6 @@ FactoryGirl.define do
   end
 
   factory :beep do
-    beep "the raven flies at midnight"
+    beep "the ~raven flies at ~moof midnight"
   end
 end
