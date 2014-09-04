@@ -5,5 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, presence: true, uniqueness: true
+
+  after_create :send_welcome_message #, other callbacks..
+
+def send_welcome_message
+  UserMailer.signup_confirmation(self).deliver
+end
 end
 
