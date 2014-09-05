@@ -14,6 +14,7 @@ class BeepsController < ApplicationController
 
   def create
     @beep = current_user.beeps.new(beep_params)
+    @beep.photo = params[:beep][:photo]
     if @beep.save
       respond_to do |format|
         format.html { redirect_to root_path}
@@ -26,6 +27,6 @@ class BeepsController < ApplicationController
 
 private
   def beep_params
-    params.require(:beep).permit(:beep)
+    params.require(:beep).permit(:beep, :photo)
   end
 end

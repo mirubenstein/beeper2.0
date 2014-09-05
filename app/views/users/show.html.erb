@@ -1,5 +1,5 @@
 <div id="flashy"></div>
-<h2><%= @user.name %> Beeps!
+<h2><%= @user.name %>
   <%= render 'connections/follow' %>
   <%= render 'connections/unfollow' %>
   <% if current_user.following?(@user) %>
@@ -12,6 +12,15 @@
     </script>
   <% end %>
 </h2>
-
-
-<%= render @user.beeps %>
+<div class="row">
+  <div class="col-md-4">
+    <h3>Your Beeps!</h3>
+    <%= render @user.beeps %>
+  </div>
+<% if current_user == @user %>
+  <div class="col-md-4">
+    <h3>Beepers you're following</h3>
+    <%= render current_user.feed %>
+  </div>
+<% end %>
+</div>

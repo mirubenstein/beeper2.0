@@ -1,1 +1,6 @@
-<p><%= link_to beep.user.name, user_path(beep.user) %> beeped <%= beep.beep %></p>
+<p>
+  <%= link_to beep.user.name, user_path(beep.user) %> beeped <%= beep.beep %>
+  <% unless beep.photo.url == '/images/original/missing.png' %>
+    <%= image_tag beep.photo.url(:thumb) %>
+  <% end %>
+</p>

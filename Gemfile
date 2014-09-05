@@ -10,7 +10,8 @@ gem 'turbolinks'
 gem "therubyracer"
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-# gem 'bcrypt'
+gem 'remotipart', '~> 1.2'
+gem "paperclip"
 gem 'devise'
 
 group :development do
