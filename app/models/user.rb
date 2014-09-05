@@ -8,16 +8,35 @@ class User < ActiveRecord::Base
 
   after_create :send_welcome_message #, other callbacks..
 
-  has_many :beeps
+  has_many :beeps, dependent: :destroy
 
-  has_many :connections
-  has_many :beepers, through: :connections, source: :followers
-  has_many :followers, through: :connections, source: :beepers
-  has_many :followers, class_name: 'Connection', foreign_key: 'beeper_id'
-  has_many :beepers, class_name: 'Connection', foreign_key: 'follower_id'
+  has_many :connections, foreign_key: 'follower_id', dependent: :destroy
+  has_many :beepers, through: :connections, source: :beeper
+  has_many :reverse_connections, foreign_key: 'beeper_id', class_name: 'Connection', dependent: :destroy
+  has_many :followers, through: :reverse_connections, source: :follower
 
   def send_welcome_message
     UserMailer.signup_confirmation(self).deliver
   end
-end
 
+  def feed
+    beepers_beeps = []
+    self.beepers.each do |beeper|
+      beepers_beeps << beeper.beeps
+    end
+    beepers.beeps.flatten
+  end
+
+  # def following? user
+  #   self.beepers.find_by(beeper_id: user.id)
+  # end
+
+  def follow user
+    Connection.create({beeper_id: user.id, follower_id: self.id})
+  end
+
+  def unfollow user
+    Connection.all.find_by({beeper_id: user.id, follower_id: self.id}).destroy
+  end
+
+end

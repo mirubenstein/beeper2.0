@@ -7,9 +7,10 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem "therubyracer"
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-gem 'bcrypt'
+# gem 'bcrypt'
 gem 'devise'
 
 group :development do
@@ -20,7 +21,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'pry'
+  # gem 'pry'
   gem 'database_cleaner'
   gem 'letter_opener'
 end
@@ -29,7 +30,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'poltergeist'
-  gem "factory_girl_rails", "~> 4.0"
+  gem "factory_girl_rails"
 end
 
 group :production do

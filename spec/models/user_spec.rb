@@ -14,11 +14,9 @@ describe User do
 
   it { should have_many :beeps }
   it { should have_many :followers }
-  it { should have_many :beepers }
 
   it "allows a user to follow another user" do
-    Connection.create({follower_id: @awesome.id, beeper_id: @user.id})
-    Connection.create({follower_id: @moof.id, beeper_id: @user.id})
-    expect(@user.followers.first.follower).to eq @awesome
+    @moof.follow(@user)
+    expect(@user.followers).to eq [@moof]
   end
 end

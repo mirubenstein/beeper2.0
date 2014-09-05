@@ -1,9 +1,11 @@
 default: &default
   adapter: postgresql
+  host: localhost
 
 development:
   <<: *default
   database: twitter_development
+  
 
 test:
   <<: *default
