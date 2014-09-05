@@ -1,3 +1,4 @@
+<div id="flashy"></div>
 <h2><%= @user.name %> Beeps!
   <%= render 'connections/follow' %>
   <%= render 'connections/unfollow' %>
@@ -6,8 +7,11 @@
       $('#unfollow_beeper').show();
     </script>
   <% else %>
-    <script> $('#follow_beeper').show(); </script>
+    <script>
+      $('#follow_beeper').show();
+    </script>
   <% end %>
 </h2>
+
 
 <%= render @user.beeps %>

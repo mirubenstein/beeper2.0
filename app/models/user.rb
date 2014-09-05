@@ -24,7 +24,6 @@ class User < ActiveRecord::Base
     self.beepers.each do |beeper|
       beepers_beeps << beeper.beeps
     end
-    binding.pry
     beepers_beeps.flatten
   end
 

@@ -1,2 +1,4 @@
 $('#unfollow_beeper').hide();
 $('#follow_beeper').show();
+$("#flashy").text("You are no longer following <%= @user.name %>");
+$("#flashy").fadeOut(2000);

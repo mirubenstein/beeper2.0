@@ -16,4 +16,10 @@ class UserMailer < ActionMailer::Base
     @beep = beep
     mail to: user.email, subject: "You were mentioned in #{beep.user.name}'s Beep"
   end
+
+  def follower_notification(follower, beeper)
+    @follower = follower
+    @beeper = beeper
+    mail to: beeper.email, subject: "#{follower.name} is following you!"
+  end
 end

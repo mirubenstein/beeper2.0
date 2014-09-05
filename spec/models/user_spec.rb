@@ -6,10 +6,12 @@ describe User do
     @awesome = FactoryGirl.create(:user, name: "awesome", email: "awesome@awesome.com")
     @moof = FactoryGirl.create(:user, name: "moof", email: "moof@moof.com")
     @user = FactoryGirl.create(:user)
+    @moof_beep = FactoryGirl.create(:beep, user_id: @moof.id)
+    @awesome_beep = FactoryGirl.create(:beep, user_id: @awesome.id)
   end
 
   it "sends an email when the user is created" do
-    expect(ActionMailer::Base.deliveries.last.to).to eq [@user.email]
+    expect(ActionMailer::Base.deliveries.first.to).to eq [@user.email]
   end
 
   it { should have_many :beeps }
@@ -25,5 +27,14 @@ describe User do
     @awesome.follow(@user)
     @moof.unfollow(@user)
     expect(@user.followers).to eq [@awesome]
+  end
+
+  it "shows all beeps of a users followers" do
+    @user.follow(@awesome)
+    @user.follow(@moof)
+    beeps = []
+    beeps << @moof.beeps
+    beeps << @awesome.beeps
+    expect(@user.feed).to eq beeps.flatten.reverse
   end
 end
