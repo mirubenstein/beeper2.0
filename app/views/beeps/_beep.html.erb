@@ -1,6 +1,8 @@
-<p>
-  <%= link_to beep.user.name, user_path(beep.user) %> beeped <%= beep.beep %>
-  <% unless beep.photo.url == '/images/original/missing.png' %>
-    <%= image_tag beep.photo.url(:thumb) %>
-  <% end %>
-</p>
+<div class="panel panel-body">
+<div class="row">
+    <div class="col-md-4"><%= link_to beep.user.name, user_path(beep.user) %> beeped <%= beep.beep %></div>
+    <% unless beep.photo.url == '/images/original/missing.png' %>
+      <div class="col-md-4"><%= image_tag beep.photo.url(:thumb) %></div>
+    <% end %>
+</div>
+</div>
