@@ -12,6 +12,7 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'remotipart', '~> 1.2'
 gem "paperclip"
+gem 'kaminari'
 gem 'devise'
 
 group :development do

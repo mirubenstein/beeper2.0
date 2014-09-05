@@ -1,7 +1,7 @@
 class BeepsController < ApplicationController
 
   def index
-  @beeps = Beep.all
+  @beeps = Beep.all.page(params[:page]).per(10)
   @beep = Beep.new
   end
 
