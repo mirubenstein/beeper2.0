@@ -1,3 +1,13 @@
-<h2><%= @user.name %> Beeps!  <%= render 'connections/follow' %><%= render 'connections/unfollow' %></h2>
+<h2><%= @user.name %> Beeps!
+  <%= render 'connections/follow' %>
+  <%= render 'connections/unfollow' %>
+  <% if current_user.following?(@user) %>
+    <script>
+      $('#unfollow_beeper').show();
+    </script>
+  <% else %>
+    <script> $('#follow_beeper').show(); </script>
+  <% end %>
+</h2>
 
 <%= render @user.beeps %>

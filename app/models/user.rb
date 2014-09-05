@@ -28,9 +28,9 @@ class User < ActiveRecord::Base
     beepers_beeps.flatten
   end
 
-  # def following? user
-  #   self.beepers.find_by(beeper_id: user.id)
-  # end
+  def following? user
+    Connection.find_by({beeper_id: user.id, follower_id: self.id})
+  end
 
   def follow user
     Connection.create({beeper_id: user.id, follower_id: self.id})
