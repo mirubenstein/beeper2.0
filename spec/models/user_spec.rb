@@ -19,4 +19,11 @@ describe User do
     @moof.follow(@user)
     expect(@user.followers).to eq [@moof]
   end
+
+  it "allows a user to unfollow another user" do
+    @moof.follow(@user)
+    @awesome.follow(@user)
+    @moof.unfollow(@user)
+    expect(@user.followers).to eq [@awesome]
+  end
 end
