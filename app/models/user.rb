@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
     self.beepers.each do |beeper|
       beepers_beeps << beeper.beeps
     end
-    beepers.beeps.flatten
+    binding.pry
+    beepers_beeps.flatten
   end
 
   # def following? user
@@ -36,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def unfollow user
-    Connection.all.find_by({beeper_id: user.id, follower_id: self.id}).destroy
+    Connection.find_by({beeper_id: user.id, follower_id: self.id}).destroy
   end
 
 end
